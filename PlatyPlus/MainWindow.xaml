@@ -5,8 +5,164 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlatyPlus"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="PlatyPlus" 
+        Name="PlatyPlusMainWindow"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="NoResize"
+        Height="750"
+        Width="1450">
 
+
+    <Window.Resources>
+        <Style x:Key="MouseOverButtonStyle" TargetType="{x:Type Button}">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="FontWeight" Value="Normal"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="SubtleImageEffectStyle" TargetType="Image">
+            <Style.Resources>
+                <DropShadowEffect x:Key="ShadowEffect" ShadowDepth="3" BlurRadius="5" Opacity="0.5"/>
+            </Style.Resources>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsMouseOver" Value="True"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="RenderTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="1.12" ScaleY="1.12"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Effect" Value="{StaticResource ShadowEffect}"/>
+                </MultiTrigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsMouseOver" Value="False"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="RenderTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Effect" Value="{x:Null}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+
+
+    </Window.Resources>
+
+    <Grid>
+        <Grid Margin="0,0,10,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition Height="3.5*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="240"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Rectangle Grid.Column="0" Grid.RowSpan="11" Margin="0,0,10,0">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="1,0" EndPoint="1,1">
+                        <GradientStop Color="#080263" Offset="0"/>
+                        <GradientStop Color="#0f068f" Offset="0.65"/>
+                        <GradientStop Color="#0968e3" Offset="0.80"/>
+                        <GradientStop Color="#ffffff" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+
+            <!--
+                <Image Name="imgLogo" Source="falta imagen" Grid.RowSpan="2" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,25,5"/>
+            -->
+            
+            <Border Grid.Column="1" Background="#080263" CornerRadius="10" Margin="7">
+                <Label Content="Control de Pedidos" x:Name="lblWindowName" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+
+            <ContentControl Content="{Binding}" Grid.Column="1" Grid.Row="1" Grid.RowSpan="10" Height="Auto" Width="Auto" Margin="0,0,10,0"/>
+
+            <Button Name="btnPedidos" Width="210" Height="50" Grid.Row="2" Margin="11,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand" Style="{StaticResource MouseOverButtonStyle}" >
+                <StackPanel Orientation="Horizontal" Width="180">
+                    
+                    <TextBlock Text="Pedidos" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Name="btnProductos" Width="210" Height="50" Grid.Row="3" Margin="11,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand" Style="{StaticResource MouseOverButtonStyle}" >
+                <StackPanel Orientation="Horizontal" Width="180">
+                    
+                    <TextBlock Text="Productos" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Name="btnCategorias" Width="210" Height="50" Grid.Row="4" Margin="11,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand" Style="{StaticResource MouseOverButtonStyle}">
+                <StackPanel Orientation="Horizontal" Width="180">
+                    
+                    <TextBlock Text="Categorías" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Name="btnMarcas" Width="210" Height="50" Grid.Row="5" Margin="11,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand" Style="{StaticResource MouseOverButtonStyle}">
+                <StackPanel Orientation="Horizontal" Width="180">
+                    
+                    <TextBlock Text="Marcas" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Name="btnClientes" Width="210" Height="50" Grid.Row="6" Margin="11,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand" Style="{StaticResource MouseOverButtonStyle}">
+                <StackPanel Orientation="Horizontal" Width="180">
+                    
+                    <TextBlock Text="Clientes" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Name="btnEmpleados" Width="210" Height="50" Grid.Row="7" Margin="11,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand" Style="{StaticResource MouseOverButtonStyle}" >
+                <StackPanel Orientation="Horizontal" Width="180">
+                    
+                    <TextBlock Text="Empleados" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Name="btnCargos" Width="210" Height="50" Grid.Row="8" Margin="11,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand" Style="{StaticResource MouseOverButtonStyle}">
+                <StackPanel Orientation="Horizontal" Width="180">
+                   
+                    <TextBlock Text="Cargos" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <Button Name="btnTipodepago" Width="210" Height="50" Grid.Row="9" Margin="11,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Cursor="Hand" Style="{StaticResource MouseOverButtonStyle}">
+                <StackPanel Orientation="Horizontal" Width="180">
+                    <TextBlock Text="Tipo de pago" FontSize="20" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <TextBlock Grid.Row="10" Grid.Column="0" FontSize="16" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,60">
+               <Hyperlink x:Name="lnkCerrar" Click="lnkCerrar_Click">Salir del Sistema</Hyperlink>
+            </TextBlock>
+        </Grid>
     </Grid>
 </Window>
